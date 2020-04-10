@@ -1,6 +1,6 @@
 import { FLIP_CARD } from '../constants/ActionsTypes'
 
-const setCardVisibility = (state, action) => {
+const cardsVisibility = (state, action) => {
 	switch (action.type) {
 		case FLIP_CARD:
 			return action.id
@@ -9,4 +9,4 @@ const setCardVisibility = (state, action) => {
 	}
 }
 
-export default setCardVisibility
+export default cardsVisibility
