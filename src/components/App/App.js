@@ -6,6 +6,9 @@ function App() {
   return (
     <div className="App">
     <Card verso={false}/>
+    <Card />
+    <Card />
+    <Card verso={false}/>
     </div>
   );
 }
