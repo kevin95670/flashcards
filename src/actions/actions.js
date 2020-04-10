@@ -1,6 +1,6 @@
 import * as types from '../constants/ActionTypes'
 
-export const setCardVisibility = (side) => ({
+export const setCardVisibility = (id) => ({
 	type: types.FLIP_CARD,
-	side,
+	id,
 })

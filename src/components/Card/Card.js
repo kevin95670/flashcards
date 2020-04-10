@@ -32,16 +32,21 @@ export default class Card extends Component {
    	}*/
    	render () {
 
+   		let contenu;
+	   	this.state.verso ? 
+	   		contenu = (<div>
+				<div className="verso"> Texte B </div>
+				<button type="button" onClick={this.montrerRecto}>Montrer A</button>
+			</div>)
+			:
+		   	contenu = (<div>
+				<div className="recto"> Texte A </div>
+				<button type="button" onClick={this.montrerVerso}>Montrer B</button>
+			</div>)
+
 	   	return(
 	   	<div>
-		   	<div>
-				<div className="recto {this.state.verso === false ? 'show' : 'hidden'}"> Texte A </div>
-				<button type="button" onClick={this.montrerVerso}>Montrer B</button>
-			</div>
-			<div>
-				<div className="verso {this.state.verso === false ? 'hidden' : 'show'}"> Texte B </div>
-				<button type="button" onClick={this.montrerRecto}>Montrer A</button>
-			</div>
+	   		{contenu}
 		</div>
 		)
 	}
