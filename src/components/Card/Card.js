@@ -5,50 +5,41 @@ import './Card.css';
 export default class Card extends Component {
 
 	static propTypes = {
-		verso: PropTypes.bool,
+		verso: PropTypes.bool.isRequired,
+      question: PropTypes.string.isRequired,
+      reponse: PropTypes.string.isRequired,
+      cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+      retournerCarte: PropTypes.func.isRequired,
 	}
 
-   	constructor(props) 
-   	{
-      super(props);
-      this.state = { verso: false };
-   	}
+      state = {
+         verso: false,
+      }
 
-   	montrerVerso = (event) => {
-		this.setState = { verso: true };
-   	}
+      retournerCarte = () =>{
+         this.props.retournerCarte();
+      }
 
-   	montrerRecto = (event) => {
-		this.setState = { verso: false };
-   	}
+   	render () 
+      {
+      console.log(this.props.cards);
+      const retourner = this.props;
+      let texte;
+      retourner.verso === false ? texte = retourner.question : texte = retourner.reponse;
+		let contenu;
 
-   	/*retournerCarte(){
-   		if(this.state.verso){
-   			this.montrerRecto();
-   		}
-   		else{
-   			this.montrerVerso();
-   		}
-   	}*/
-   	render () {
+   	contenu = (
+         <div>
+			  <div className="card"> {texte} </div>
+			  <button type="button" onClick={() => this.retournerCarte()}>Retourner</button>
+		   </div>
+      )
 
-   		let contenu;
-	   	this.state.verso ? 
-	   		contenu = (<div>
-				<div className="verso"> Texte B </div>
-				<button type="button" onClick={this.montrerRecto}>Montrer A</button>
-			</div>)
-			:
-		   	contenu = (<div>
-				<div className="recto"> Texte A </div>
-				<button type="button" onClick={this.montrerVerso}>Montrer B</button>
-			</div>)
-
-	   	return(
-	   	<div>
-	   		{contenu}
-		</div>
-		)
+   	return(
+         <div>
+   		   {contenu}
+         </div>
+      )
 	}
 
 }
