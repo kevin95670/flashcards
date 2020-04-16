@@ -1,14 +1,11 @@
 import React from 'react';
 import './App.css';
-import Card from '../Card/Card';
+import CardContainer from '../../containers/index'
 
 function App() {
   return (
     <div className="App">
-    <Card verso={false}/>
-    <Card />
-    <Card />
-    <Card verso={false}/>
+    	<CardContainer />
     </div>
   );
 }

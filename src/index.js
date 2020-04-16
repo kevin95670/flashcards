@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers/flip_reducer';
+import flipReducer from './reducers/flip_reducer';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(reducer)
+const store = createStore(flipReducer)
 
 ReactDOM.render(
   	<Provider store={store}>

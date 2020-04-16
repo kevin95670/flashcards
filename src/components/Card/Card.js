@@ -5,50 +5,38 @@ import './Card.css';
 export default class Card extends Component {
 
 	static propTypes = {
-		verso: PropTypes.bool,
+      card: PropTypes.object.isRequired,
+      retournerCarte: PropTypes.func.isRequired
 	}
 
-   	constructor(props) 
-   	{
-      super(props);
-      this.state = { verso: false };
-   	}
+      state = {
+         verso: false,
+      }
 
-   	montrerVerso = (event) => {
-		this.setState = { verso: true };
-   	}
+      retournerCarte = (id) =>{
+         this.props.retournerCarte(id);
+      }
 
-   	montrerRecto = (event) => {
-		this.setState = { verso: false };
-   	}
+   	render () 
+      {
+      console.log(this.props.retournerCarte);
+      const retourner = this.props;
+      let texte;
+      this.state.verso === false ? texte = retourner.card.question : texte = retourner.card.reponse;
+		let contenu;
 
-   	/*retournerCarte(){
-   		if(this.state.verso){
-   			this.montrerRecto();
-   		}
-   		else{
-   			this.montrerVerso();
-   		}
-   	}*/
-   	render () {
+   	contenu = (
+         <div>
+			  {texte}
+           <button onClick={() => this.retournerCarte(retourner.card.id)} >Flip</button>
+		   </div>
+      )
 
-   		let contenu;
-	   	this.state.verso ? 
-	   		contenu = (<div>
-				<div className="verso"> Texte B </div>
-				<button type="button" onClick={this.montrerRecto}>Montrer A</button>
-			</div>)
-			:
-		   	contenu = (<div>
-				<div className="recto"> Texte A </div>
-				<button type="button" onClick={this.montrerVerso}>Montrer B</button>
-			</div>)
-
-	   	return(
-	   	<div>
-	   		{contenu}
-		</div>
-		)
+   	return(
+         <li className="card">
+   		   {contenu}
+         </li>
+      )
 	}
 
 }
