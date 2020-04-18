@@ -6,30 +6,39 @@ export default class Card extends Component {
 
 	static propTypes = {
       card: PropTypes.object.isRequired,
-      retournerCarte: PropTypes.func.isRequired
+      retournerCarte: PropTypes.func.isRequired,
 	}
 
       state = {
          verso: false,
+         flipEffect: false,
+         disable: false
       }
 
-      retournerCarte = (id) =>{
-         this.props.retournerCarte(id);
+      retournerCarte = () =>{
+         this.props.retournerCarte();
+         this.setState({ verso: !this.state.verso, flipEffect:true })
+      }
+
+      disableCard = () =>{
+         this.setState({disable: !this.state.disable, flipEffect:false});
       }
 
    	render () 
       {
-      console.log(this.props.retournerCarte);
-      const retourner = this.props;
-      let texte;
-      this.state.verso === false ? texte = retourner.card.question : texte = retourner.card.reponse;
+      const data = this.props;
+      const state = this.state;
+      let texte = state.verso === false ? data.card.question : data.card.reponse;
+      let disableSign = state.disable === false ? "fa-eye" : "fa-eye-slash";
 		let contenu;
 
    	contenu = (
          <div>
-			  {texte}
-           <button onClick={() => this.retournerCarte(retourner.card.id)} >Flip</button>
-		   </div>
+            <div className={`div-card ${state.verso ? "verso" : state.flipEffect ? "recto" : ""} ${state.disable === false ? "enable" : "disable"}`} onClick={() => this.retournerCarte()}>
+              <p>{texte}</p>
+   		   </div>
+            <i onClick={ () => this.disableCard() } className={`fa eye ${disableSign}`}></i>
+         </div>
       )
 
    	return(

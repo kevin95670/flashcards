@@ -2,7 +2,6 @@ import { FLIP_CARD } from '../constants/ActionsTypes'
 import cardsData from  '../data/cards-data';
 
 const initialState = {
-	verso: false,
 	cardsData
 }
 
@@ -11,14 +10,12 @@ const flipReducer = (state = initialState, action) => {
 		case FLIP_CARD:
 			if(state.verso){
 				return Object.assign({},state, {
-                    verso: false,
-                    texte: cardsData.cards[0].question
+                    texte: cardsData.cards.question
                   });
 			}
 			else{
 				return Object.assign({},state, {
-                    verso: true,
-                    texte: cardsData.cards[0].reponse
+                    texte: cardsData.cards.reponse
                   });
 			}
 		default:

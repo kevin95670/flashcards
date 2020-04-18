@@ -5,3 +5,67 @@
 .show{
 	display: block;
 }
+
+.cards-list{
+	padding: 0;
+	list-style: none;
+	display: flex;
+	justify-content:space-around;
+	flex-wrap: wrap;
+}
+
+.cards-list li .div-card{
+	border: 1px solid black;
+	padding: 20px 10px;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	background: white;
+	border-radius: 10px;
+	-webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.div-card:hover{
+	cursor: pointer;
+}
+
+.recto.enable{
+	animation-name: rotate3dRecto;
+  	animation-duration: 2s;
+}
+
+.verso.enable{
+  	animation-name: rotate3dVerso;
+  	animation-duration: 2s;
+}
+
+.cards-list li .div-card p{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	margin: 0;
+	transform: translate(-50%,-50%);
+}
+
+.eye:hover{
+	cursor: pointer;
+}
+
+.div-card.disable{
+	border-color: gray;
+	color: gray;
+	pointer-events: none;
+}
+
+@keyframes rotate3dVerso {
+  from { transform: skewY(0); }
+  to { transform:  skewY(180deg); }
+}
+
+@keyframes rotate3dRecto {
+  from { transform: skewY(180deg); }
+  to { transform:  skewY(360deg); }
+}

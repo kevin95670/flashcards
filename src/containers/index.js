@@ -2,14 +2,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as retournerCarte from '../actions/actions'
 import CardList from '../components/Card/CardList'
-//import { getVisibleTodos } from '../selectors'
 
 const mapStateToProps = (state) => ({
-	cards: state.cardsData.cards
+	cards: state.cardsData.cards,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators(retournerCarte, dispatch),
+	retournerCarte: bindActionCreators(retournerCarte, dispatch),
 })
 
 const CardContainer = connect(

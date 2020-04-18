@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import Card from '../Card/Card'
 
-const CardList = ({ cards, actions }) => (
+const CardList = ({ cards, retournerCarte }) => (
 	<ul className="cards-list">
 		{cards.map((card) =>
-			<Card key={card.id} card={card} {...actions} />)}
+			<Card key={card.id} card={card} {...retournerCarte} />)}
 	</ul>
 )
 
@@ -16,7 +16,7 @@ CardList.propTypes = {
 		question: PropTypes.string.isRequired,
 		reponse: PropTypes.string.isRequired,
 	}).isRequired).isRequired,
-	actions: PropTypes.func.isRequired,
+	retournerCarte: PropTypes.object.isRequired,
 }
 
 export default CardList
