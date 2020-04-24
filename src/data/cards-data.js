@@ -1,8 +1,8 @@
 module.exports = {
 	cards: 
 		[
-			{ id: 0, question: 'Qui gagne en 1v1 entre un ours et un requin ?', reponse: 'L\'ours déter' },
-			{ id: 1, question: 'Plus grand club de france ?', reponse: 'Paris' },
+			{ id: 0, question: 'Quelle est la capitale du vénézuela ?', reponse: 'Caracas' },
+			{ id: 1, question: 'Quelle est la couleur de la boite noire d\'un avion  ?', reponse: 'Orange' },
 			{ id: 2, question: 'Qui a été le premier colon en Amérique ?', reponse: 'Christophe' },
 		]
 };
